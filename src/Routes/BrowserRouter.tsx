@@ -1,6 +1,9 @@
 import Layout from "../Layout/Layout";
 
 import PageNotFound from "../Pages/PageNotFound";
+import IndexPage from "../Pages/IndexPage";
+import SignInPage from "../Pages/SignInPage";
+import UserPage from "../Pages/UserPage";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -17,8 +20,9 @@ export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       {/* <Route path="accueil" element={<Page404 />} /> */}
-      <Route path="" element={<p>acccueil</p>} />
-      <Route path="sign-in" element={<p>SignIn</p>} />
+      <Route path="" element={<IndexPage />} />
+      <Route path="sign-in" element={<SignInPage />} />
+      <Route path="user" element={<UserPage />} />
       <Route path="*" element={<PageNotFound />} />
     </Route>
   )

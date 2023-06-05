@@ -5,6 +5,10 @@ export const routerArray = [
   },{
     url: "sign-in",
     linkName: "Signin",
+  },
+  {
+    url: "user",
+    linkName: "User",
   }
 ];
 

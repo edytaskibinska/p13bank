@@ -6,7 +6,7 @@ const MenuStyled = styled.ul`
   display: flex;
   .navLink {
     padding: 20px;
-    font-size: 24px;
+    font-size: 12px;
     text-decoration: none;
     &.active {
       text-decoration: underline;
