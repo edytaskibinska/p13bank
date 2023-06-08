@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from "react";
+import { FC, useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Page404Styled = styled.div`
@@ -36,8 +36,9 @@ const Page404Styled = styled.div`
     }
   }
 `;
-interface IPageNotFound {
-}
+
+interface IPageNotFound {}
+
 //@ts-ignore
 const PageNotFound: FC<IPageNotFound> = () => {
   const [component, setComponent] = useState(false);

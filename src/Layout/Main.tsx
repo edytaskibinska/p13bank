@@ -3,7 +3,6 @@ import React, { FC, ReactNode } from "react";
 import styled from "styled-components";
 
 const MainStyled = styled.main`
-  border: 2px solid red;
   flex: 1;
 `;
 

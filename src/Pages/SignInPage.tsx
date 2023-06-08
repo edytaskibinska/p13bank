@@ -1,5 +1,6 @@
 import { FC } from "react";
 import styled from "styled-components";
+import {WhiteCard} from "../Components"
 
 const SignInPageStyled = styled.div`
   min-height: calc(100vh - 180px);
@@ -54,12 +55,13 @@ const SignInPageStyled = styled.div`
     font-size: 1.2rem;
   }
 `;
+
 interface ISignInPage {}
-//@ts-ignore
+
 const SignInPage: FC<ISignInPage> = () => {
   return (
     <SignInPageStyled className="SignInPage bg-dark">
-      <section className="sign-in-content">
+      <WhiteCard className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
         <form>
@@ -83,7 +85,7 @@ const SignInPage: FC<ISignInPage> = () => {
           <!-- <button className="sign-in-button">Sign In</button> -->
           <!--  --> */}
         </form>
-      </section>
+      </WhiteCard>
     </SignInPageStyled>
   );
 };
