@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styled from "styled-components";
-import UserIcon from "../assets/UserIcon";
+import UserIcon from "../Assets/UserIcon";
 
 const NavStyled = styled.nav`
   display: flex;

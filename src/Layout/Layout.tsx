@@ -1,6 +1,6 @@
 //TODO indexation in typescript env like import { Nav, Footer } from "./Components";
 import React, { FC, ReactNode } from "react";
-import logo from "../assets/argentBankLogo.png";
+import logo from "../Assets/argentBankLogo.png";
 import styled from "styled-components";
 
 import Footer from "./Footer";

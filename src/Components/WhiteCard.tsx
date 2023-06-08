@@ -12,6 +12,7 @@ export const WhiteCardBasic = styled.section<IWhiteCardBasicStyle>`
   margin: 3rem auto 0px;
   padding: 2rem;
 `;
+
 interface IWhiteCard {
   children?: ReactNode;
   maxWidth?: boolean;

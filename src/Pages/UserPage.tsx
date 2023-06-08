@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styled from "styled-components";
-import { WhiteCard, WideWhiteCard } from "../Components";
+import { WideWhiteCard } from "../Components";
 
 const UserPageStyled = styled.div`
   .account {
