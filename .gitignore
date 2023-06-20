@@ -1,5 +1,16 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+
+# training linked files :
+/src/StoreSrc/notesTemp.js
+/src/StoreSrc/storetemp.js
+/src/StoreSrc/storeCopy.ts
+/src/StoreSrc/Slices/dummySlice.ts
+/src/StoreSrc/Features/PlayPauseExample
+/src/StoreSrc/Features/freelancestemp.js
+/src/StoreSrc/Features/themetemp.js
+
+
 # dependencies
 /node_modules
 /.pnp

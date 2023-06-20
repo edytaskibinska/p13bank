@@ -11,6 +11,24 @@ const initialState: CounterState = {
   value: 0,
 };
 
+
+// Récupérez le reducer et les actions
+// La fonction createSlice  retourne un objet avec les propriétés suivantes :
+
+// name  : le nom du slice.
+
+// reducer  : le Reducer créé par Redux-Toolkit.
+
+// actions  : un objet contenant les action creators.
+// On va donc déstructurer le slice pour récupérer le reducer et les actions :
+
+// // on extrait les actions et le reducer
+// const { actions, reducer } = themeSlice
+// // on export chaque action individuellement
+// export const { set, toggle } = actions
+// // on export le reducer comme default export
+// export default reducer
+
 export const counterSlice = createSlice({
   name: "counter",
   // `createSlice` will infer the state type from the `initialState` argument

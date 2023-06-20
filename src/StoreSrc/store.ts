@@ -1,7 +1,5 @@
-import {
-  combineReducers,
-  configureStore
-} from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+
 //import slice
 import { counterSlice } from "./Slices/counterSlice";
 import { dummySlice } from "./Slices/dummySlice";
@@ -20,6 +18,25 @@ import {
 import storage from "redux-persist/lib/storage";
 //END WITH REDUX PERSIST
 
+//FAKE MIDDLEWARES
+// const logMiddleware = (store: any) => (next: any) => (action: any) => {
+//   // on affiche chaque action dans la console
+//   console.log(action);
+//   return next(action);
+// };
+// const deprecatedActionsMiddleware =
+//   (store: any) => (next: any) => (action: any) => {
+//     if ((action.type = "menu/hide")) {
+//       console.warn(
+//         `Laction "menu/hide" est dépréciée, veuillez utiliser l'action "menu/compactMode" à la place`
+//       );
+//       // on n'exécute pas next pour ne pas envoyer l'action au reducer !
+//       return;
+//     }
+//     // sinon on envoie l'action au reducer
+//     return next(action);
+//   };
+//END fake middlewares
 //COMBINE REDUCERS - mettre reducers ensemble
 const reducers = combineReducers({
   counter: counterSlice.reducer,
@@ -36,25 +53,24 @@ export const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, reducers);
 
 //////        OPTION 1
-// export const store = configureStore({
-//   reducer: persistedReducer,
-// });
+export const store = configureStore({
+  reducer: persistedReducer,
+});
 
 //////        OPTION  2
 //This creates a Redux store, and
 //also automatically configure the Redux DevTools extension
 //so that you can inspect the store while developing.
-export const store = configureStore({
-  reducer: {
-    counter: counterSlice.reducer,
-    dummy: dummySlice.reducer,
-    // posts: postsReducer,
-    // comments: commentsReducer,
-    // users: usersReducer,
-  },
-});
+// export const store = configureStore({
+//   reducer: {
+//     counter: counterSlice.reducer,
+//     dummy: dummySlice.reducer,
+//   },
+//   ///MIDDLEWARE example
+//   //middleware: [logMiddleware, deprecatedActionsMiddleware],
+// });
 
-console.log(" STORE", store.getState())
+console.log(" STORE", store.getState());
 
 // This creates a Redux store,
 //and also automatically configure the Redux DevTools extension so that you can inspect the store while developing.
@@ -65,5 +81,4 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 //TODO utiliser persistor
-//export let persistor = persistStore(store);
-
+export let persistor = persistStore(store);
