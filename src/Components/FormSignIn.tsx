@@ -152,12 +152,12 @@ const FormSignIn: FC<IFormSignIn> = () => {
       });
       console.log("data", data);
       if (data && data.status === 200) {
-        //store dispatch action
+        //store dispatch action (in slices)
         dispatch({
-          type: "auth/storeToken",
+          type: "authentication/storeToken",
           payload: {
             token: data.body.token,
-            userIslogged: true,
+            isLog: true,
           },
         });
         if (rememberInput) {
@@ -168,11 +168,11 @@ const FormSignIn: FC<IFormSignIn> = () => {
           document.cookie =
             "token=" + data.body.token + ";expires=" + expiryDate.toUTCString();
           document.cookie =
-            "userIslogged=true;expires=" + expiryDate.toUTCString();
+            "isLog=true;expires=" + expiryDate.toUTCString();
           navigate("/user");
         } else {
           document.cookie = "token=" + data.body.token;
-          document.cookie = "userIslogged=true";
+          document.cookie = "isLog=true";
           navigate("/user");
         }
       } else if (error && error.status === 400) {

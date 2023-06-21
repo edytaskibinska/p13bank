@@ -3,12 +3,12 @@ import { PURGE } from "redux-persist";
 
 interface AuthType {
   token: string;
-  userIsLogged: boolean;
+  isLog: boolean;
 }
 
 const initialState: AuthType = {
   token: "",
-  userIsLogged: false,
+  isLog: false,
 };
 
 //slice for user authentication
@@ -18,7 +18,7 @@ export const authentication = createSlice({
   reducers: {
     storeToken: (state, action) => {
       state.token = action.payload.token;
-      state.userIsLogged = action.payload.userIsLogged;
+      state.isLog = action.payload.isLog;
     },
     Purge: (state, action) => {
       return initialState;
