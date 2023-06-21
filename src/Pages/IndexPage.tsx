@@ -5,7 +5,6 @@ import bgImage from "../Assets/bank-tree.jpeg";
 import chatIcon from "../Assets/icon-chat.png";
 import moneyIcon from "../Assets/icon-money.png";
 import securityIcon from "../Assets/icon-security.png";
-import {CounterReduxExamlpe} from "../Components/CounterReduxExamlpe"
 
 const IndexPageStyled = styled.div`
   .hero-content {
@@ -71,7 +70,6 @@ const IndexPage: FC<IIndexPage> = () => {
         </WhiteCard>
       </BlockBg>
       <section className="features">
-        <CounterReduxExamlpe/>
         <h2 className="sr-only">Features</h2>
 
         <Feature imgSrc={chatIcon} title="You are our #1 priority">

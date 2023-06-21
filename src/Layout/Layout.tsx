@@ -27,7 +27,6 @@ const LayoutStyled = styled.div`
 const Layout: FC<ILayout> = ({ menu, content }) => {
   return (
     <LayoutStyled>
-      <Menu menuArray={menu} />
       <Nav logoSrc={logo} title="Argent Bank<"></Nav>
 
       <Main>{content}</Main>

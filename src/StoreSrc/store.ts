@@ -1,10 +1,15 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import {
+  combineReducers,
+  configureStore,
+  getDefaultMiddleware,
+} from "@reduxjs/toolkit";
+///import slices
+import { authentication } from "./slices/authentication";
+import { editButton } from "./slices/editButton";
+import { user } from "./slices/user";
 
-//import slice
-import { counterSlice } from "./Slices/counterSlice";
-import { dummySlice } from "./Slices/dummySlice";
-
-//TEST WITH REDUX PERSIST
+import { useArgentBankAPI } from "./apiHooks/useArgentBankAPI";
+//TODO a reviser
 import {
   persistReducer,
   FLUSH,
@@ -16,69 +21,33 @@ import {
   persistStore,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-//END WITH REDUX PERSIST
 
-//FAKE MIDDLEWARES
-// const logMiddleware = (store: any) => (next: any) => (action: any) => {
-//   // on affiche chaque action dans la console
-//   console.log(action);
-//   return next(action);
-// };
-// const deprecatedActionsMiddleware =
-//   (store: any) => (next: any) => (action: any) => {
-//     if ((action.type = "menu/hide")) {
-//       console.warn(
-//         `Laction "menu/hide" est dépréciée, veuillez utiliser l'action "menu/compactMode" à la place`
-//       );
-//       // on n'exécute pas next pour ne pas envoyer l'action au reducer !
-//       return;
-//     }
-//     // sinon on envoie l'action au reducer
-//     return next(action);
-//   };
-//END fake middlewares
-//COMBINE REDUCERS - mettre reducers ensemble
 const reducers = combineReducers({
-  counter: counterSlice.reducer,
-  dummy: dummySlice.reducer,
+  auth: authentication.reducer,
+  editBtn: editButton.reducer,
+  user: user.reducer,
+  [useArgentBankAPI.reducerPath]: useArgentBankAPI.reducer,
 });
 
-//create perrsist config
-export const persistConfig = {
+export const persistDataConf = {
   key: "root",
   version: 1,
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, reducers);
+console.log("useArgentBankAPI", useArgentBankAPI.middleware)
+const persistedReducer = persistReducer(persistDataConf, reducers);
 
-//////        OPTION 1
 export const store = configureStore({
   reducer: persistedReducer,
+  //https://redux-toolkit.js.org/api/getDefaultMiddleware
+  middleware: getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }).concat(useArgentBankAPI.middleware),
 });
 
-//////        OPTION  2
-//This creates a Redux store, and
-//also automatically configure the Redux DevTools extension
-//so that you can inspect the store while developing.
-// export const store = configureStore({
-//   reducer: {
-//     counter: counterSlice.reducer,
-//     dummy: dummySlice.reducer,
-//   },
-//   ///MIDDLEWARE example
-//   //middleware: [logMiddleware, deprecatedActionsMiddleware],
-// });
-
-console.log(" STORE", store.getState());
-
-// This creates a Redux store,
-//and also automatically configure the Redux DevTools extension so that you can inspect the store while developing.
-
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch;
 
-//TODO utiliser persistor
 export let persistor = persistStore(store);
