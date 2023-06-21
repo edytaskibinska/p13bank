@@ -1,6 +1,15 @@
-import { FC } from "react";
+import { FC, useState } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { useLoginUserMutation } from "../StoreSrc/apiHooks/useArgentBankAPI";
 import styled from "styled-components";
 import UserIcon from "../Assets/UserIcon";
+
+import Logout from "./Logout";
+import { useSelector } from "react-redux";
+import { RootState } from "../StoreSrc/store";
 
 const NavStyled = styled.nav`
   display: flex;
@@ -34,7 +43,6 @@ const NavStyled = styled.nav`
   .main-nav-logo {
     display: flex;
     align-items: center;
-  
   }
   .main-nav-logo-image {
     max-width: 100%;
@@ -60,7 +68,26 @@ interface INav {
   title: string;
 }
 
-const Nav: FC<INav> = ({ logoSrc, title}) => {
+const Nav: FC<INav> = ({ logoSrc, title }) => {
+  const { firstName, lastName } = useSelector((state: RootState) => state.user);
+  const { isLog } = useSelector((state: RootState) => state.auth);
+  const [logout, setLogout] = useState<Boolean>(false);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+
+  const onClickLogout =  () => {
+    setLogout(true)
+    console.log("logout", logout)
+    dispatch({
+      type: "authentication/storeToken",
+      payload: {
+        token: "",
+        isLog: false,
+      },
+    });
+  }
   return (
     <NavStyled className="main-nav">
       <a className="main-nav-logo" href="./">
@@ -72,10 +99,27 @@ const Nav: FC<INav> = ({ logoSrc, title}) => {
         <h1 className="sr-only">{title}</h1>
       </a>
       <div>
-        <a className="main-nav-item" href="./sign-in">
-          <UserIcon fill="rgb(44, 62, 80)"/>
-          Sign In
-        </a>
+        {isLog ? (
+          <>
+            <Link className="main-nav-item" to="/sign-in">
+              <UserIcon fill="rgb(44, 62, 80)" />
+
+              welcome{ `${firstName } ${lastName}`}
+            </Link>
+            <Link
+              className="main-nav-item"
+              to=""
+              onClick={() => onClickLogout()}
+            >
+              <UserIcon fill="rgb(44, 62, 80)" />
+              Sign Out
+            </Link>
+          </>
+        ) : (
+          <Link className="main-nav-item" to="/sign-in">
+            Sign In
+          </Link>
+        )}
       </div>
     </NavStyled>
   );
