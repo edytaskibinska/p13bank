@@ -10,15 +10,16 @@ const Logout = (): null => {
   const navigate = useNavigate();
   document.cookie = "token=; Max-Age=0";
   document.cookie = "isLog=; Max-Age=0";
-  useEffect(() => {
-    const test = async () => {
-      await persistor.purge();
-    };
-    test();
-  }, []);
+  // useEffect(() => {
+  //   const test = async () => {
+  //     await persistor.purge();
+  //   };
+  //   test();
+  // }, []);
 
   useEffect(() => {
-    navigate("/login");
+    navigate("/sign-in");
+    console.log("EEEEFFFECCCT")
   }, [navigate]);
   return null;
 };

@@ -1,13 +1,11 @@
 import { FC, useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { useLoginUserMutation } from "../StoreSrc/apiHooks/useArgentBankAPI";
 import styled from "styled-components";
 import UserIcon from "../Assets/UserIcon";
+import SignOutIcon from "../Assets/SignOutIcon";
 
-import Logout from "./Logout";
 import { useSelector } from "react-redux";
 import { RootState } from "../StoreSrc/store";
 
@@ -72,14 +70,11 @@ const Nav: FC<INav> = ({ logoSrc, title }) => {
   const { firstName, lastName } = useSelector((state: RootState) => state.user);
   const { isLog } = useSelector((state: RootState) => state.auth);
   const [logout, setLogout] = useState<Boolean>(false);
-
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
-  const onClickLogout =  () => {
-    setLogout(true)
-    console.log("logout", logout)
+  const onClickLogout = () => {
+    setLogout(true);
+    console.log("logout", logout);
     dispatch({
       type: "authentication/storeToken",
       payload: {
@@ -87,7 +82,7 @@ const Nav: FC<INav> = ({ logoSrc, title }) => {
         isLog: false,
       },
     });
-  }
+  };
   return (
     <NavStyled className="main-nav">
       <a className="main-nav-logo" href="./">
@@ -103,20 +98,20 @@ const Nav: FC<INav> = ({ logoSrc, title }) => {
           <>
             <Link className="main-nav-item" to="/sign-in">
               <UserIcon fill="rgb(44, 62, 80)" />
-
-              welcome{ `${firstName } ${lastName}`}
+              {`Welcome ${firstName} ${lastName}`}
             </Link>
             <Link
               className="main-nav-item"
               to=""
               onClick={() => onClickLogout()}
             >
-              <UserIcon fill="rgb(44, 62, 80)" />
+              <SignOutIcon fill="rgb(44, 62, 80)" />
               Sign Out
             </Link>
           </>
         ) : (
           <Link className="main-nav-item" to="/sign-in">
+            <UserIcon fill="rgb(44, 62, 80)" />
             Sign In
           </Link>
         )}

@@ -1,11 +1,10 @@
 //TODO indexation in typescript env like import { Nav, Footer } from "./Components";
-import React, { FC, ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import logo from "../Assets/argentBankLogo.png";
 import styled from "styled-components";
 
 import Footer from "./Footer";
 import Nav from "./Nav";
-import Menu from "./Menu";
 import Main from "./Main";
 
 interface ILayout {
@@ -24,13 +23,11 @@ const LayoutStyled = styled.div`
   }
 `;
 
-const Layout: FC<ILayout> = ({ menu, content }) => {
+const Layout: FC<ILayout> = ({ content }) => {
   return (
     <LayoutStyled>
       <Nav logoSrc={logo} title="Argent Bank<"></Nav>
-
       <Main>{content}</Main>
-
       <Footer>Copyright 2020 Argent Bank</Footer>
     </LayoutStyled>
   );

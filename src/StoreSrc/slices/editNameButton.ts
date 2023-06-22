@@ -11,8 +11,8 @@ const initialState: AuthType = {
 
 //slice for user edit button
 
-export const editButton = createSlice({
-  name: "editButton",
+export const editNameButton = createSlice({
+  name: "editNameButton",
   initialState,
   reducers: {
     toggle: (state, action) => {

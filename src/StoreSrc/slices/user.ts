@@ -20,7 +20,6 @@ const initialState: AuthType = {
 };
 
 //slice for user store user
- 
 export const user = createSlice({
   name: "user",
   initialState,

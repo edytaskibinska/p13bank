@@ -1,6 +1,5 @@
-import React, { FC, ReactNode , ChangeEvent, LegacyRef} from "react";
+import { FC, ChangeEvent, LegacyRef } from "react";
 import styled from "styled-components";
-
 
 export const FormInputComponentBasic = styled.div`
   label {
@@ -22,10 +21,12 @@ interface IFormInputComponent {
   type: string;
   isCheckbox: boolean;
   className: string;
+  value?: string | number;
+  placeholder?: string;
   required?: boolean;
-  refErrorObject?: LegacyRef<HTMLDivElement>,
+  refErrorObject?: LegacyRef<HTMLDivElement>;
   inputClassName?: string;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void; 
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const FormInputComponent: FC<IFormInputComponent> = ({
@@ -35,6 +36,8 @@ const FormInputComponent: FC<IFormInputComponent> = ({
   type,
   isCheckbox,
   className,
+  value,
+  placeholder,
   inputClassName,
   required,
   refErrorObject,
@@ -61,6 +64,8 @@ const FormInputComponent: FC<IFormInputComponent> = ({
             type={type}
             id={forId}
             required={required}
+            value={value}
+            placeholder={placeholder}
             className={inputClassName}
             onChange={onChange}
           />

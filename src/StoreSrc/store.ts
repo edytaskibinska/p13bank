@@ -5,7 +5,7 @@ import {
 } from "@reduxjs/toolkit";
 ///import slices
 import { authentication } from "./slices/authentication";
-import { editButton } from "./slices/editButton";
+import { editNameButton } from "./slices/editNameButton";
 import { user } from "./slices/user";
 
 import { useArgentBankAPI } from "./apiHooks/useArgentBankAPI";
@@ -24,7 +24,7 @@ import storage from "redux-persist/lib/storage";
 
 const reducers = combineReducers({
   auth: authentication.reducer,
-  editBtn: editButton.reducer,
+  editBtn: editNameButton.reducer,
   user: user.reducer,
   [useArgentBankAPI.reducerPath]: useArgentBankAPI.reducer,
 });

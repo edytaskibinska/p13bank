@@ -76,14 +76,7 @@ const FormSignIn: FC<IFormSignIn> = () => {
   const emailValidator = (e: React.ChangeEvent<HTMLInputElement>) => {
     const mailregex = /^([\w.-]+)@([\w-]+)((\.(\w){2,})+)$/;
     if (mailregex.test(e.target.value)) {
-      validator(
-        e,
-        true,
-        "",
-        setEmailInput,
-        setValidEmail,
-        errorMessageContent
-      );
+      validator(e, true, "", setEmailInput, setValidEmail, errorMessageContent);
     } else if (e.target.value.length === 0) {
       validator(
         e,
@@ -143,8 +136,6 @@ const FormSignIn: FC<IFormSignIn> = () => {
 
   const formSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("formSubmit validEmail", validEmail);
-    console.log("formSubmit validPassword", validPassword);
     if (validEmail && validPassword) {
       const { data, error }: any = await loginUser({
         email: emailInput,
@@ -167,8 +158,7 @@ const FormSignIn: FC<IFormSignIn> = () => {
           expiryDate.setMonth(expiryDate.getMonth() + 1);
           document.cookie =
             "token=" + data.body.token + ";expires=" + expiryDate.toUTCString();
-          document.cookie =
-            "isLog=true;expires=" + expiryDate.toUTCString();
+          document.cookie = "isLog=true;expires=" + expiryDate.toUTCString();
           navigate("/user");
         } else {
           document.cookie = "token=" + data.body.token;

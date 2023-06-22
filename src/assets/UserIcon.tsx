@@ -1,9 +1,7 @@
 import { FC } from "react";
 import styled from "styled-components";
 
-export const UserIconStyled = styled.svg`
-  border: 1px solid red;
-`;
+export const UserIconStyled = styled.svg``;
 
 interface IUserIcon {
   fill?: string;

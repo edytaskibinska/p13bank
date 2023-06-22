@@ -30,7 +30,7 @@ export const useArgentBankAPI = createApi({
     //https://redux-toolkit.js.org/rtk-query/api/created-api/hooks#usemutation
     //https://redux-toolkit.js.org/rtk-query/usage/mutations
     signUpUser: builder.mutation({
-      query: ({email, password, firstName, lastName}) => ({
+      query: ({ email, password, firstName, lastName }) => ({
         url: `user/signup`,
         method: "POST",
         body: { email, password, firstName, lastName },
