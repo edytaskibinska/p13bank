@@ -44,6 +44,11 @@ const FormSignInStyled = styled.div`
     color: red;
     font-size: 10px;
   }
+  .globalErrorMessage {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
 `;
 
 interface IFormSignIn {}
@@ -168,8 +173,9 @@ const FormSignIn: FC<IFormSignIn> = () => {
         console.log("error && error.status === 400", error);
 
         console.log("error && error.status === 400", data);
+        console.log("error.data.message", error.data.message);
         let errorMessages = document.querySelector(".globalErrorMessage");
-        if (errorMessages) errorMessages.textContent = error.data.message;
+        if (errorMessages) errorMessages.textContent = 'User or Password are invalid';
       }
     } 
     

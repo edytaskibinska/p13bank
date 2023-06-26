@@ -7,6 +7,8 @@ import { useSetProfileMutation } from "../StoreSrc/apiHooks/useArgentBankAPI";
 
 import { FormInputComponent } from ".";
 
+import { changeValidHandler } from "../Helpers/inputValidator";
+
 const FormEditUserStyled = styled.div`
   .errorMessage {
     color: red;
@@ -78,34 +80,41 @@ const FormEditUser = (): JSX.Element => {
   );
   const changeFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length > 0) {
-      //TODO refactor handler
-      handler(e, "first", true, "");
+      changeValidHandler(
+        e,
+        true,
+        "",
+        setFirstNameInp,
+        setValidFirstName
+      );
     } else if (e.target.value.length === 0) {
-      handler(e, "first", false, "");
+      changeValidHandler(
+        e,
+        false,
+        "",
+        setFirstNameInp,
+        setValidFirstName
+      );
     }
   };
   const changeLastName = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length > 0) {
-      handler(e, "last", true, "");
+      changeValidHandler(
+        e,
+        true,
+        "",
+        setLastNameInp,
+        setValidLastName
+      );
     } else if (e.target.value.length === 0) {
-      handler(e, "last", false, "");
+     changeValidHandler(
+      e,
+      false,
+      "",
+      setLastNameInp,
+      setValidLastName
+    );
     }
-  };
-
-  const handler = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    type: string,
-    valid: boolean,
-    message: string
-  ) => {
-    type === "first"
-      ? setFirstNameInp(e.target.value)
-      : setLastNameInp(e.target.value);
-    let nextElement = e.target.nextSibling;
-    if (nextElement) {
-      nextElement.textContent = message;
-    }
-    type === "first" ? setValidFirstName(valid) : setValidLastName(valid);
   };
 
   const submit = async () => {

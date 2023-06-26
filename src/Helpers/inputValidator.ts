@@ -13,3 +13,17 @@ export const validator = (
 };
 
 
+export const changeValidHandler = (
+  e: React.ChangeEvent<HTMLInputElement>,
+  valid: boolean,
+  message: string,
+  setInput: (e: any) => void,
+  setValidInput: (valid: boolean) => void,
+) => {
+  setInput(e.target.value)
+  let nextElement = e.target.nextSibling;
+  if (nextElement) {
+    nextElement.textContent = message;
+  }
+  setValidInput(valid);
+};
