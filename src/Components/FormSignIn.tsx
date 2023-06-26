@@ -6,7 +6,6 @@ import { useLoginUserMutation } from "../StoreSrc/apiHooks/useArgentBankAPI";
 import styled from "styled-components";
 import { FormInputComponent } from "../Components";
 //helpers
-
 import { validator } from "../Helpers/inputValidator";
 
 const FormSignInStyled = styled.div`
@@ -172,40 +171,8 @@ const FormSignIn: FC<IFormSignIn> = () => {
         let errorMessages = document.querySelector(".globalErrorMessage");
         if (errorMessages) errorMessages.textContent = error.data.message;
       }
-    } else {
-      if (validEmail === false) {
-        //TODO corriger
-
-        messageErrorSubmit(
-          refEmailErrorMsg,
-          emailInput,
-          "Email : need to be not empty"
-        );
-      }
-      if (validPassword === false) {
-        //TODO corriger
-        console.log("ELSE validPassword", validPassword);
-        messageErrorSubmit(
-          refPasswordError2,
-          passwordInput,
-          "Password : need to be not empty"
-        );
-      }
-    }
-  };
-
-  const messageErrorSubmit = (
-    e: React.MutableRefObject<null>,
-    input: string,
-    message: string
-  ) => {
-    let htmlElement: HTMLElement = e.current!;
-    console.log("MESSAGE ERR element", htmlElement);
-    if (input.length === 0) {
-      if (htmlElement) {
-        htmlElement.textContent = message;
-      }
-    }
+    } 
+    
   };
 
   return (

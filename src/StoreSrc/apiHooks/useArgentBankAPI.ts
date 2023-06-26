@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 
+
 //SRC
 //https://redux-toolkit.js.org/rtk-query/usage-with-typescript#createapi
 export const useArgentBankAPI = createApi({
@@ -14,11 +15,13 @@ export const useArgentBankAPI = createApi({
         //The name “Bearer authentication” can be understood as “give access to the bearer of this token.”
         headers.set("authorization", `Bearer ${token}`);
       }
-
       return headers;
     },
   }),
   endpoints: (builder) => ({
+    //Mutation endpoints are defined by returning an object inside the endpoints section of createApi, 
+    //and defining the fields using the build.mutation() method.
+    //https://redux.js.org/tutorials/essentials/part-8-rtk-query-advanced
     loginUser: builder.mutation({
       query: ({ email, password }) => ({
         url: `user/login`,
@@ -29,6 +32,7 @@ export const useArgentBankAPI = createApi({
     //MUTATION DOC:
     //https://redux-toolkit.js.org/rtk-query/api/created-api/hooks#usemutation
     //https://redux-toolkit.js.org/rtk-query/usage/mutations
+    //change/update signUpUser field
     signUpUser: builder.mutation({
       query: ({ email, password, firstName, lastName }) => ({
         url: `user/signup`,

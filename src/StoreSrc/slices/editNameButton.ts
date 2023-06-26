@@ -9,6 +9,7 @@ const initialState: AuthType = {
   display: false,
 };
 
+//STATE SLICES
 //slice for user edit button
 
 export const editNameButton = createSlice({
