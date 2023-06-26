@@ -43,4 +43,5 @@ export const user = createSlice({
   },
 });
 
+//Export actions for user
 export const { storeUser } = user.actions;

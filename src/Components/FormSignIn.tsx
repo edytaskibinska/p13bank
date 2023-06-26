@@ -146,6 +146,7 @@ const FormSignIn: FC<IFormSignIn> = () => {
         password: passwordInput,
       });
       console.log("data", data);
+      console.log("data", data?.body.token);
       if (data && data.status === 200) {
         //store dispatch action (in slices)
         dispatch({
@@ -197,7 +198,7 @@ const FormSignIn: FC<IFormSignIn> = () => {
           className="input-wrapper"
           required
           refErrorObject={refEmailErrorMsg}
-          onChange={(e: any) => emailValidator(e)}
+          onChange={(e) => emailValidator(e)}
         />
 
         <FormInputComponent
@@ -209,7 +210,7 @@ const FormSignIn: FC<IFormSignIn> = () => {
           className="input-wrapper"
           required
           refErrorObject={refPasswordError}
-          onChange={(e: any) => passwordValidator(e)}
+          onChange={(e) => passwordValidator(e)}
         />
         <div className="refTest" ref={refPasswordError2}></div>
         <div className="globalErrorMessage"></div>
@@ -220,7 +221,7 @@ const FormSignIn: FC<IFormSignIn> = () => {
           type="checkbox"
           isCheckbox={true}
           className="input-remember"
-          onChange={(e: any) => changeCheckboxInput(e)}
+          onChange={(e) => changeCheckboxInput(e)}
         />
         <button className="sign-in-button">Sign In</button>
       </form>

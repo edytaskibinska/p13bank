@@ -2,7 +2,7 @@ export const validator = (
   e: React.ChangeEvent<HTMLInputElement>,
   valid: boolean,
   errormessage: string,
-  setInput: (e: any) => void,
+  setInput: (e: string) => void,
   setValidator: (valid: boolean) => void,
   setErrorMessage: (e: any, errorMessage: string) => void
 ) => {
@@ -17,7 +17,7 @@ export const changeValidHandler = (
   e: React.ChangeEvent<HTMLInputElement>,
   valid: boolean,
   message: string,
-  setInput: (e: any) => void,
+  setInput: (e: string) => void,
   setValidInput: (valid: boolean) => void,
 ) => {
   setInput(e.target.value)

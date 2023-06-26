@@ -9,6 +9,7 @@ const FeatureStyled = styled.div`
     border: 10px solid #00bc77;
     border-radius: 50%;
     padding: 1rem;
+    margin-bottom: 10px;
   }
   .feature-item-title {
     color: #222;

@@ -8,6 +8,7 @@ import { Logout, FormEditUser } from "../Components";
 import { useGetProfileMutation } from "../StoreSrc/apiHooks/useArgentBankAPI";
 
 const UserPageStyled = styled.div`
+  padding-bottom: 100px;
   .account {
     display: flex;
     justify-content: space-between;
@@ -93,7 +94,7 @@ const UserPage: FC<IUserPage> = () => {
   const { firstName, lastName } = useSelector((state: RootState) => state.user);
   const { isLog } = useSelector((state: RootState) => state.auth);
   const { display } = useSelector((state: RootState) => state.editBtn);
-  const [userLogggedOut, serLogggedOut] = useState(false);
+  const [userLogggedOut, setUserLogggedOut] = useState(false);
 
   useEffect(() => {
     let cookieTokenSetter = document.cookie.replace(
@@ -112,7 +113,7 @@ const UserPage: FC<IUserPage> = () => {
         cookieIsLog.length > 0
       )
     ) {
-      serLogggedOut(true);
+      setUserLogggedOut(true);
     }
   }, []);
 

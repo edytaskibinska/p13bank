@@ -13,7 +13,7 @@ import { routerArray } from "./routerArray";
 import { Outlet } from "react-router-dom";
 
 const Root = () => {
-  return <Layout menu={routerArray} content={<Outlet />} />;
+  return <Layout menu={routerArray} content={<Outlet />} />
 };
 
 export const router = createBrowserRouter(
@@ -30,4 +30,3 @@ export const router = createBrowserRouter(
 
 export default Root;
 
-//DOING

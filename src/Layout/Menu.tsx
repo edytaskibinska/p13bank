@@ -15,7 +15,7 @@ const MenuStyled = styled.ul`
 `;
 
 interface IMenu {
-  menuArray?: any;
+  menuArray?: [];
 }
 interface IMenuArray {
   url: string;

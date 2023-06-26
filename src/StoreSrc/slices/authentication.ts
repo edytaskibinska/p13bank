@@ -34,3 +34,6 @@ export const authentication = createSlice({
     });
   },
 });
+
+//Export actions for edit authentication
+export const { storeToken } = authentication.actions;

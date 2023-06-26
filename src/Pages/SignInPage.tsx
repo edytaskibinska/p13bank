@@ -3,9 +3,8 @@ import styled from "styled-components";
 import { WhiteCard, FormSignIn } from "../Components";
 
 const SignInPageStyled = styled.div`
-  min-height: calc(100vh - 180px);
-  //margin-top: -50px;
-  padding-top: 60px;
+  min-height: calc(100vh - 140px);
+  padding-top: 80px;
   .sign-in-content {
     box-sizing: border-box;
     background-color: white;

@@ -29,3 +29,6 @@ export const editNameButton = createSlice({
     });
   },
 });
+
+//Export actions for edit button
+export const { toggle } = editNameButton.actions;
