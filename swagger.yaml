@@ -3,8 +3,150 @@
 
 swagger: '2.0'
 info:
-  title: Bank Argent API documentation
+  title: Bank Argent API Transaction documentation
   description: Contains all available API endpoints in this codebase
   version: '1.0.0'
   termsOfService: 'http://swagger.io/terms/'
 host: localhost:3001
+basePath: /api/v1
+schemes:
+  - http
+paths:
+  /user/operations:
+    get:
+      tags:
+        - Transactions Module
+      summary: Transactions
+      description: API for monthly transactions
+      parameters:
+        - in: body
+          name: body
+          description: Transactions Payload
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionsList'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transactions shown with success
+          schema:
+            $ref: '#/definitions/TransactionsList'
+        '400':
+          description: Cannot get transactions
+        '500':
+          description: Internal Server Error
+  /user/operation/{id}:
+    get:
+      tags:
+        - Transactions Module
+      summary: Transaction detail
+      description: API for transaction detail
+      parameters:
+        - in: body
+          name: body
+          description: Transaction detail Payload
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionDetail'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Got operation Successfully
+          schema:
+            $ref: '#/definitions/TransactionDetail'
+        '400':
+          description: Cannot get operation
+        '500':
+          description: Internal Server Error
+  /user/operation/{id}/new:
+    post:
+      tags:
+        - Transactions Module
+      summary: Adding information to transaction  API
+      description: API for adding information for user transaction
+      parameters:
+        - in: body
+          name: body
+          description: Transaction detail Payload
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionDetail'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transaction retrieved successully
+          schema:
+            $ref: '#/definitions/TransactionDetail'
+        '400':
+          description: Cannot get operation
+        '500':
+          description: Internal Server Error
+    put:
+      tags:
+       - Transactions Module
+      summary: Modifying information of transaction
+      description: API for transaction
+      parameters:
+        - in: body
+          name: body
+          description: Transaction detail Payload
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionDetail'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transaction retrieved successully
+          schema:
+            $ref: '#/definitions/TransactionDetail'
+        '400':
+          description: Cannot get operation
+        '500':
+          description: Internal Server Error
+    delete:
+      tags:
+       - Transactions Module
+      summary: Modifying information of transaction
+      description: API for transaction
+      parameters:
+        - in: body
+          name: body
+          description: Transaction detail Payload
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionDetail'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transaction retrieved successully
+          schema:
+            $ref: '#/definitions/TransactionDetail'
+        '400':
+          description: Cannot get operation
+        '500':
+          description: Internal Server Error
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  TransactionsList:
+    properties:
+      transactions:
+        type: array
+        description: transaction list
+  TransactionDetail:
+    type: object
+    properties:
+      title:
+        type: string
+      amount:
+        type: string
+      description:
+        type: string
