@@ -138,49 +138,56 @@ const FormSignIn: FC<IFormSignIn> = () => {
     setRememberInput(e.target.checked);
   };
 
-  const formSubmit = async (e: React.FormEvent) => {
+  async function formSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (validEmail && validPassword) {
-      const { data, error }: any = await loginUser({
-        email: emailInput,
-        password: passwordInput,
-      });
-      console.log("data", data);
-      console.log("data", data?.body.token);
-      if (data && data.status === 200) {
-        //store dispatch action (in slices)
-        dispatch({
-          type: "authentication/storeToken",
-          payload: {
-            token: data.body.token,
-            isLog: true,
-          },
+    try {
+      if (validEmail && validPassword) {
+        const { data, error }: any = await loginUser({
+          email: emailInput,
+          password: passwordInput,
         });
-        if (rememberInput) {
-          //cookie expiring in one month
-          console.log("rememberInput truthy");
-          var expiryDate = new Date();
-          expiryDate.setMonth(expiryDate.getMonth() + 1);
-          document.cookie =
-            "token=" + data.body.token + ";expires=" + expiryDate.toUTCString();
-          document.cookie = "isLog=true;expires=" + expiryDate.toUTCString();
-          navigate("/user");
-        } else {
-          document.cookie = "token=" + data.body.token;
-          document.cookie = "isLog=true";
-          navigate("/user");
-        }
-      } else if (error && error.status === 400) {
-        console.log("error && error.status === 400", error);
+        console.log("data", data);
+        console.log("data", data?.body.token);
+        if (data && data.status === 200) {
+          //store dispatch action (in slices)
+          dispatch({
+            type: "authentication/storeToken",
+            payload: {
+              token: data.body.token,
+              isLog: true,
+            },
+          });
+          if (rememberInput) {
+            //cookie expiring in one month
+            console.log("rememberInput truthy");
+            var expiryDate = new Date();
+            expiryDate.setMonth(expiryDate.getMonth() + 1);
+            document.cookie =
+              "token=" +
+              data.body.token +
+              ";expires=" +
+              expiryDate.toUTCString();
+            document.cookie = "isLog=true;expires=" + expiryDate.toUTCString();
+            navigate("/user");
+          } else {
+            document.cookie = "token=" + data.body.token;
+            document.cookie = "isLog=true";
+            navigate("/user");
+          }
+        } else if (error && error.status === 400) {
+          console.log("error && error.status === 400", error);
 
-        console.log("error && error.status === 400", data);
-        console.log("error.data.message", error.data.message);
-        let errorMessages = document.querySelector(".globalErrorMessage");
-        if (errorMessages) errorMessages.textContent = 'User or Password are invalid';
+          console.log("error && error.status === 400", data);
+          console.log("error.data.message", error.data.message);
+          let errorMessages = document.querySelector(".globalErrorMessage");
+          if (errorMessages)
+            errorMessages.textContent = "User or Password are invalid";
+        }
       }
-    } 
-    
-  };
+    } catch (error) {
+      console.log(`The error is: ${error}`);
+    }
+  }
 
   return (
     <FormSignInStyled className="FormSignIn">

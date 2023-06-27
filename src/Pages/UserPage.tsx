@@ -96,6 +96,27 @@ const UserPage: FC<IUserPage> = () => {
   const { display } = useSelector((state: RootState) => state.editBtn);
   const [userLogggedOut, setUserLogggedOut] = useState(false);
 
+  async function fetchData() {
+    const { data }: any = await getUserData({});
+    try {
+      if (data.body) {
+        dispatch({
+          type: "user/storeUser",
+          payload: {
+            id: data.body.id,
+            email: data.body.email,
+            firstName: data.body.firstName,
+            lastName: data.body.lastName,
+            createdAt: data.body.createdAt,
+            updatedAt: data.body.updatedAt,
+          },
+        });
+      }
+    } catch (error) {
+      console.log(`The error is: ${error}`);
+    }
+  }
+
   useEffect(() => {
     let cookieTokenSetter = document.cookie.replace(
       /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
@@ -118,23 +139,7 @@ const UserPage: FC<IUserPage> = () => {
   }, []);
 
   useEffect(() => {
-    const fetch = async () => {
-      const { data }: any = await getUserData({});
-      if (data.body) {
-        dispatch({
-          type: "user/storeUser",
-          payload: {
-            id: data.body.id,
-            email: data.body.email,
-            firstName: data.body.firstName,
-            lastName: data.body.lastName,
-            createdAt: data.body.createdAt,
-            updatedAt: data.body.updatedAt,
-          },
-        });
-      }
-    };
-    if (isLog) fetch();
+    if (isLog) fetchData();
   }, [dispatch, getUserData, isLog]);
 
   return (

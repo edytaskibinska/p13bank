@@ -93,33 +93,37 @@ const FormEditUser = (): JSX.Element => {
     }
   };
 
-  const submit = async () => {
-    if (validFirstName && validLastName) {
-      setShowError(false);
-      const { data }: any = await editUser({
-        firstName: firstNameInp,
-        lastName: lastNameInp,
-      });
-      if (data && data.status === 200) {
-        dispatch({
-          type: "user/storeUser",
-          payload: {
-            id: id,
-            email: email,
-            firstName: firstNameInp,
-            lastName: lastNameInp,
-            createdAt: createdAt,
-            updatedAt: data.body.updatedAt,
-          },
+  async function editUserSubmit() {
+    try {
+      if (validFirstName && validLastName) {
+        setShowError(false);
+        const { data }: any = await editUser({
+          firstName: firstNameInp,
+          lastName: lastNameInp,
         });
-        dispatch({
-          type: "editNameButton/toggle",
-        });
+        if (data && data.status === 200) {
+          dispatch({
+            type: "user/storeUser",
+            payload: {
+              id: id,
+              email: email,
+              firstName: firstNameInp,
+              lastName: lastNameInp,
+              createdAt: createdAt,
+              updatedAt: data.body.updatedAt,
+            },
+          });
+          dispatch({
+            type: "editNameButton/toggle",
+          });
+        }
+      } else {
+        setShowError(true);
       }
-    } else {
-      setShowError(true);
+    } catch (error) {
+      console.log(`The error is: ${error}`);
     }
-  };
+  }
   useEffect(() => {
     setFirstNameInp(firstName);
     setLastNameInp(lastName);
@@ -161,7 +165,7 @@ const FormEditUser = (): JSX.Element => {
         <div className="editBtnFlex">
           <button
             className="editSubmitBtn editSubmitBtnRight"
-            onClick={() => submit()}
+            onClick={() => editUserSubmit()}
           >
             Save
           </button>
