@@ -10,7 +10,6 @@ import Main from "./Main";
 
 interface ILayout {
   content?: ReactNode;
-  menu?: any;
 }
 
 const LayoutStyled = styled.div`

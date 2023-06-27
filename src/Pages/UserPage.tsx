@@ -119,7 +119,7 @@ const UserPage: FC<IUserPage> = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const { data, error }: any = await getUserData({});
+      const { data }: any = await getUserData({});
       if (data.body) {
         dispatch({
           type: "user/storeUser",

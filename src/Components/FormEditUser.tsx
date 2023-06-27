@@ -80,47 +80,23 @@ const FormEditUser = (): JSX.Element => {
   );
   const changeFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length > 0) {
-      changeValidHandler(
-        e,
-        true,
-        "",
-        setFirstNameInp,
-        setValidFirstName
-      );
+      changeValidHandler(e, true, "", setFirstNameInp, setValidFirstName);
     } else if (e.target.value.length === 0) {
-      changeValidHandler(
-        e,
-        false,
-        "",
-        setFirstNameInp,
-        setValidFirstName
-      );
+      changeValidHandler(e, false, "", setFirstNameInp, setValidFirstName);
     }
   };
   const changeLastName = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length > 0) {
-      changeValidHandler(
-        e,
-        true,
-        "",
-        setLastNameInp,
-        setValidLastName
-      );
+      changeValidHandler(e, true, "", setLastNameInp, setValidLastName);
     } else if (e.target.value.length === 0) {
-     changeValidHandler(
-      e,
-      false,
-      "",
-      setLastNameInp,
-      setValidLastName
-    );
+      changeValidHandler(e, false, "", setLastNameInp, setValidLastName);
     }
   };
 
   const submit = async () => {
     if (validFirstName && validLastName) {
       setShowError(false);
-      const { data, error }: any = await editUser({
+      const { data }: any = await editUser({
         firstName: firstNameInp,
         lastName: lastNameInp,
       });

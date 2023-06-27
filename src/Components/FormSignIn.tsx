@@ -70,7 +70,7 @@ const FormSignIn: FC<IFormSignIn> = () => {
   const refPasswordError2 = useRef(null);
 
   const errorMessageContent = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<Element>,
     errMessage: string
   ) => {
     let errorDiv = e.target.nextSibling as HTMLElement;
