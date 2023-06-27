@@ -77,7 +77,7 @@ paths:
         - application/json
       responses:
         '200':
-          description: User transaction retrieved successully
+          description: User profile retrieved successully
           schema:
             $ref: '#/definitions/TransactionDetail'
         '400':
@@ -100,7 +100,7 @@ paths:
         - application/json
       responses:
         '200':
-          description: User transaction retrieved successully
+          description: User profile retrieved successully
           schema:
             $ref: '#/definitions/TransactionDetail'
         '400':
@@ -110,7 +110,7 @@ paths:
     delete:
       tags:
        - Transactions Module
-      summary: Modifying information of transaction
+      summary: Deleting transaction
       description: API for transaction
       parameters:
         - in: body
@@ -123,7 +123,7 @@ paths:
         - application/json
       responses:
         '200':
-          description: User transaction retrieved successully
+          description: User profile retrieved successully
           schema:
             $ref: '#/definitions/TransactionDetail'
         '400':
