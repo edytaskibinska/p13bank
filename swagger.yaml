@@ -13,6 +13,8 @@ schemes:
 paths:
   /user/operations:
     get:
+      security:
+        - Bearer: []
       tags:
         - Transactions Module
       summary: Transactions
@@ -37,6 +39,8 @@ paths:
           description: Internal Server Error
   /user/operation/{id}:
     get:
+      security:
+        - Bearer: []
       tags:
         - Transactions Module
       summary: Transaction detail
@@ -61,14 +65,16 @@ paths:
           description: Cannot get operation
         '500':
           description: Internal Server Error
-  /user/operation/{id}:
+  /user/operation/{trId}:
     post:
+      security:
+        - Bearer: []
       tags:
         - Transactions Module
       summary: Adding information to transaction  API
       description: API for adding information for user transaction
       parameters:
-        - name: id
+        - name: trId
           in: path
           description: ID of the operation
           required: true
@@ -92,6 +98,8 @@ paths:
         '500':
           description: Internal Server Error
     put:
+      security:
+        - Bearer: []
       tags:
        - Transactions Module
       summary: Modifying information of transaction
@@ -115,6 +123,8 @@ paths:
         '500':
           description: Internal Server Error
     delete:
+      security:
+        - Bearer: []
       tags:
        - Transactions Module
       summary: Deleting transaction
@@ -137,6 +147,7 @@ paths:
           description: Cannot get operation
         '500':
           description: Internal Server Error
+
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -149,11 +160,17 @@ definitions:
         type: array
         description: transaction list
   TransactionDetail:
-    type: object
     properties:
       title:
         type: string
+        description: transaction title
       amount:
         type: string
+        description: transaction amount
       description:
         type: string
+        description: transaction description
+     
+
+
+

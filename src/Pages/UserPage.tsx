@@ -119,6 +119,8 @@ const UserPage: FC<IUserPage> = () => {
   useEffect(() => {
     async function fetchData() {
       const { data }: any = await getUserData({});
+      console.log("data", data);
+
       try {
         if (data.body) {
           dispatch({
