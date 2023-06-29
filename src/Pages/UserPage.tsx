@@ -120,6 +120,7 @@ const UserPage: FC<IUserPage> = () => {
     async function fetchData() {
       const { data }: any = await getUserData({});
       console.log("data", data);
+      console.log("TOKEN", data.body.token);
 
       try {
         if (data.body) {

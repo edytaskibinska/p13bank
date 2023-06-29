@@ -52,6 +52,10 @@ paths:
           required: true
           type: integer
           format: int64
+        - in: body
+          name: body
+          description: Transaction detail Payload
+          required: true
           schema:
             $ref: '#/definitions/TransactionDetail'
       produces:
@@ -65,7 +69,6 @@ paths:
           description: Cannot get operation
         '500':
           description: Internal Server Error
-  /user/operation/{trId}:
     post:
       security:
         - Bearer: []
@@ -74,7 +77,7 @@ paths:
       summary: Adding information to transaction  API
       description: API for adding information for user transaction
       parameters:
-        - name: trId
+        - name: id
           in: path
           description: ID of the operation
           required: true
@@ -105,6 +108,12 @@ paths:
       summary: Modifying information of transaction
       description: API for transaction
       parameters:
+        - name: id
+          in: path
+          description: ID of the operation
+          required: true
+          type: integer
+          format: int64
         - in: body
           name: body
           description: Transaction detail Payload
@@ -130,6 +139,12 @@ paths:
       summary: Deleting transaction
       description: API for transaction
       parameters:
+        - name: id
+          in: path
+          description: ID of the operation
+          required: true
+          type: integer
+          format: int64
         - in: body
           name: body
           description: Transaction detail Payload
@@ -170,7 +185,3 @@ definitions:
       description:
         type: string
         description: transaction description
-     
-
-
-
