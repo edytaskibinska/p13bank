@@ -5,7 +5,6 @@ const Logout = (): null => {
   const navigate = useNavigate();
   document.cookie = "token=; Max-Age=0";
   document.cookie = "isLog=; Max-Age=0";
-
   useEffect(() => {
     navigate("/sign-in");
   }, [navigate]);

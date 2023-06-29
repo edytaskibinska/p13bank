@@ -11,7 +11,6 @@ const initialState: AuthType = {
 
 //STATE SLICES
 //slice for user edit button
-
 export const editNameButton = createSlice({
   name: "editNameButton",
   initialState,

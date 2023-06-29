@@ -4,11 +4,11 @@ import { renderWithProviders } from "../Helpers/utilsForTests";
 import { editNameButton } from "../StoreSrc/slices/editNameButton";
 
 describe("Redux store tests", () => {
-  test("testing Edit Button Slice name ", () => {
+  test("testing Edit Button Slice name", () => {
     const getName = editNameButton.name;
     expect(getName).toBe("editNameButton");
   });
-  test("testing Edit Button Slice initial state ", () => {
+  test("testing Edit Button Slice initial state", () => {
     const listSliceInit = editNameButton?.getInitialState();
     expect(listSliceInit.display).toBe(false);
   });

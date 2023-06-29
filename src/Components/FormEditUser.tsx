@@ -4,9 +4,7 @@ import styled from "styled-components";
 
 import { RootState } from "../StoreSrc/store";
 import { useSetProfileMutation } from "../StoreSrc/apiHooks/useArgentBankAPI";
-
 import { FormInputComponent } from ".";
-
 import { changeValidHandler } from "../Helpers/inputValidator";
 
 const FormEditUserStyled = styled.div`

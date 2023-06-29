@@ -19,6 +19,7 @@ const initialState: AuthType = {
   updatedAt: "",
 };
 
+//STATE SLICES
 //slice for user store user
 export const user = createSlice({
   name: "user",

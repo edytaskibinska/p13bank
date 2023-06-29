@@ -4,8 +4,8 @@ import { Provider } from "react-redux";
 import { store, persistor } from "../StoreSrc/store";
 
 import { PersistGate } from "redux-persist/integration/react";
-// As a basic setup, import your same slice reducers
 
+// As a basic setup, import your same slice reducers
 export function renderWithProviders(
   ui: any,
   { preloadedState = {}, ...renderOptions } = {}

@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { useLoginUserMutation } from "../StoreSrc/apiHooks/useArgentBankAPI";
 import styled from "styled-components";
 import { FormInputComponent } from "../Components";
-//helpers
 import { validator } from "../Helpers/inputValidator";
 
 const FormSignInStyled = styled.div`
@@ -146,8 +145,8 @@ const FormSignIn: FC<IFormSignIn> = () => {
           email: emailInput,
           password: passwordInput,
         });
-        console.log("data", data);
-        console.log("data", data?.body.token);
+        // console.log("data", data);
+        // console.log("data", data?.body.token);
         if (data && data.status === 200) {
           //store dispatch action (in slices)
           dispatch({
@@ -159,7 +158,6 @@ const FormSignIn: FC<IFormSignIn> = () => {
           });
           if (rememberInput) {
             //cookie expiring in one month
-            console.log("rememberInput truthy");
             var expiryDate = new Date();
             expiryDate.setMonth(expiryDate.getMonth() + 1);
             document.cookie =
@@ -175,10 +173,8 @@ const FormSignIn: FC<IFormSignIn> = () => {
             navigate("/user");
           }
         } else if (error && error.status === 400) {
-          console.log("error && error.status === 400", error);
-
-          console.log("error && error.status === 400", data);
-          console.log("error.data.message", error.data.message);
+          // console.log("error && error.status === 400", error);
+          // console.log("error.data.message", error.data.message);
           let errorMessages = document.querySelector(".globalErrorMessage");
           if (errorMessages)
             errorMessages.textContent = "User or Password are invalid";
@@ -188,7 +184,6 @@ const FormSignIn: FC<IFormSignIn> = () => {
       console.log(`The error is: ${error}`);
     }
   }
-
   return (
     <FormSignInStyled className="FormSignIn">
       <form

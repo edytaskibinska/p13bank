@@ -14,6 +14,7 @@ export const FormInputComponentBasic = styled.div`
     font-size: 10px;
   }
 `;
+
 interface IFormInputComponent {
   id: string;
   forId: string;
