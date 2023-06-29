@@ -2,8 +2,6 @@ import { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { WideWhiteCard } from "../Components";
-
-import {editNameButton} from "../StoreSrc/slices/editNameButton"
 import { RootState } from "../StoreSrc/store";
 import { Logout, FormEditUser } from "../Components";
 import { useGetProfileMutation } from "../StoreSrc/apiHooks/useArgentBankAPI";
@@ -97,27 +95,6 @@ const UserPage: FC<IUserPage> = () => {
   const { display } = useSelector((state: RootState) => state.editBtn);
   const [userLogggedOut, setUserLogggedOut] = useState(false);
 
-  async function fetchData() {
-    const { data }: any = await getUserData({});
-    try {
-      if (data.body) {
-        dispatch({
-          type: "user/storeUser",
-          payload: {
-            id: data.body.id,
-            email: data.body.email,
-            firstName: data.body.firstName,
-            lastName: data.body.lastName,
-            createdAt: data.body.createdAt,
-            updatedAt: data.body.updatedAt,
-          },
-        });
-      }
-    } catch (error) {
-      console.log(`The error is: ${error}`);
-    }
-  }
-
   useEffect(() => {
     let cookieTokenSetter = document.cookie.replace(
       /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
@@ -140,6 +117,26 @@ const UserPage: FC<IUserPage> = () => {
   }, []);
 
   useEffect(() => {
+    async function fetchData() {
+      const { data }: any = await getUserData({});
+      try {
+        if (data.body) {
+          dispatch({
+            type: "user/storeUser",
+            payload: {
+              id: data.body.id,
+              email: data.body.email,
+              firstName: data.body.firstName,
+              lastName: data.body.lastName,
+              createdAt: data.body.createdAt,
+              updatedAt: data.body.updatedAt,
+            },
+          });
+        }
+      } catch (error) {
+        console.log(`The error is: ${error}`);
+      }
+    }
     if (isLog) fetchData();
   }, [dispatch, getUserData, isLog]);
 
@@ -159,9 +156,6 @@ const UserPage: FC<IUserPage> = () => {
                 <button
                   className="edit-button"
                   onClick={() => {
-                    console.log("click");
-                    console.log("editNameButton?.getInitialState", editNameButton?.getInitialState())
-
                     dispatch({
                       type: "editNameButton/toggle",
                     });
