@@ -170,9 +170,12 @@ securityDefinitions:
     in: header
 definitions:
   TransactionsList:
-    properties:
-      transactions:
-        type: array
+    properties: 
+      transaction1:
+        type: object
+        description: transaction list
+      transaction2:
+        type: object
         description: transaction list
   TransactionDetail:
     properties:
