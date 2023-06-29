@@ -7,12 +7,10 @@ import { ThemeProvider } from "styled-components";
 
 function App() {
   return (
-    <>
-     <ThemeProvider theme={{ mode: "dark" }}>
+    <ThemeProvider theme={{ mode: "dark" }}>
       <NormalizeStyle />
       <RouterProvider router={router} />;
     </ThemeProvider>
-    </>
   );
 }
 

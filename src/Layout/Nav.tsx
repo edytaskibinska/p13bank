@@ -74,7 +74,6 @@ const Nav: FC<INav> = ({ logoSrc, title }) => {
 
   const onClickLogout = () => {
     setLogout(true);
-    console.log("logout", logout);
     dispatch({
       type: "authentication/storeToken",
       payload: {

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { WideWhiteCard } from "../Components";
 
+import {editNameButton} from "../StoreSrc/slices/editNameButton"
 import { RootState } from "../StoreSrc/store";
 import { Logout, FormEditUser } from "../Components";
 import { useGetProfileMutation } from "../StoreSrc/apiHooks/useArgentBankAPI";
@@ -159,6 +160,8 @@ const UserPage: FC<IUserPage> = () => {
                   className="edit-button"
                   onClick={() => {
                     console.log("click");
+                    console.log("editNameButton?.getInitialState", editNameButton?.getInitialState())
+
                     dispatch({
                       type: "editNameButton/toggle",
                     });

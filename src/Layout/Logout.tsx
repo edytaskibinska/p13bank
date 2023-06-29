@@ -14,7 +14,6 @@ const Logout = (): null => {
         console.log(`The error is: ${error}`);
       }
     }
-
     logoutPurgeState();
   }, []);
   useEffect(() => {
