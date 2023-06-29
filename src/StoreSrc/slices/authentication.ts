@@ -10,7 +10,7 @@ const initialState: AuthType = {
   token: "",
   isLog: false,
 };
-
+//Étape 4 Authentifier les appels de l'API
 //STATE SLICES
 //slice for user authentication
 export const authentication = createSlice({

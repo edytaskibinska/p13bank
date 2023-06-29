@@ -1,6 +1,5 @@
 
-#TODO DOC TRANSACTION  :
-
+---
 swagger: '2.0'
 info:
   title: Bank Argent API Transaction documentation
@@ -43,10 +42,12 @@ paths:
       summary: Transaction detail
       description: API for transaction detail
       parameters:
-        - in: body
-          name: body
-          description: Transaction detail Payload
+        - name: id
+          in: path
+          description: ID of the operation
           required: true
+          type: integer
+          format: int64
           schema:
             $ref: '#/definitions/TransactionDetail'
       produces:
@@ -60,13 +61,19 @@ paths:
           description: Cannot get operation
         '500':
           description: Internal Server Error
-  /user/operation/{id}/new:
+  /user/operation/{id}:
     post:
       tags:
         - Transactions Module
       summary: Adding information to transaction  API
       description: API for adding information for user transaction
       parameters:
+        - name: id
+          in: path
+          description: ID of the operation
+          required: true
+          type: integer
+          format: int64
         - in: body
           name: body
           description: Transaction detail Payload

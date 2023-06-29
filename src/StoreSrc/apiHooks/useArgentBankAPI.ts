@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 
-
+//Étape 3 Créer une couche de service pour mettre en œuvre les appels à l'API
+//Étape 4 Authentifier les appels de l'API
 //SRC
 //https://redux-toolkit.js.org/rtk-query/usage-with-typescript#createapi
 export const useArgentBankAPI = createApi({
