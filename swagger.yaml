@@ -178,21 +178,15 @@ definitions:
           id:
             type: number
             description: transaction id
-          date:
-            type: string
-            description: transaction date
           title:
             type: string
             description: transaction title
           balance:
             type: number
             description: transaction balance
-          amount:
-            type: number
-            description: transaction amount
-          details:
-            type: object
-            description: transaction details
+          balanceTypeDescription:
+            type: string
+            description: type of balance - current or avaliable
       transaction 2:
         type: object
         description: transaction list
@@ -200,22 +194,15 @@ definitions:
           id:
             type: number
             description: transaction id
-          date:
-            type: string
-            description: transaction date
           title:
             type: string
             description: transaction title
           balance:
             type: number
             description: transaction balance
-          amount:
-            type: number
-            description: transaction amount
-          details:
-            type: object
-            description: transaction details
-
+          balanceTypeDescription:
+            type: string
+            description: type of balance - current or avaliable
   Transaction:
     properties:
       id:
@@ -224,22 +211,19 @@ definitions:
       date:
         type: string
         description: transaction date
-      title:
-        type: string
-        description: transaction title
-      balance:
-        type: number
-        description: transaction balance
+      description:
+          type: string
+          description: transaction description
       amount:
         type: number
         description: transaction amount
+      balance:
+        type: number
+        description: transaction balance
       details:
         type: object
         description: transaction details
         properties:
-          description:
-            type: string
-            description: transaction description
           type:
             type: string
             description: transaction type
