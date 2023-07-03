@@ -41,6 +41,7 @@ export const persistConfig = {
   key: "root",
   version: 1,
   storage,
+  blacklist: ['user']//n'ajoute pas les donnnées utilisateurs a localstorage - securité
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
