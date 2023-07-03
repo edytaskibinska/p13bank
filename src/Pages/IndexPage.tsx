@@ -1,10 +1,10 @@
 import { FC } from "react";
 import styled from "styled-components";
 import { WhiteCard, BlockBg, Feature } from "../Components";
-import bgImage from "../Assets/bank-tree.jpeg";
-import chatIcon from "../Assets/icon-chat.png";
-import moneyIcon from "../Assets/icon-money.png";
-import securityIcon from "../Assets/icon-security.png";
+import bgImage from "../assets/bank-tree.jpeg";
+import chatIcon from "../assets/icon-chat.png";
+import moneyIcon from "../assets/icon-money.png";
+import securityIcon from "../assets/icon-security.png";
 
 const IndexPageStyled = styled.div`
   .hero-content {

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import styled from "styled-components";
-import UserIcon from "../Assets/UserIcon";
-import SignOutIcon from "../Assets/SignOutIcon";
+import UserIcon from "../assets/UserIcon";
+import SignOutIcon from "../assets/SignOutIcon";
 
 import { useSelector } from "react-redux";
 import { RootState } from "../StoreSrc/store";

@@ -145,8 +145,6 @@ const FormSignIn: FC<IFormSignIn> = () => {
           email: emailInput,
           password: passwordInput,
         });
-        // console.log("data", data);
-        // console.log("data", data?.body.token);
         if (data && data.status === 200) {
           //store dispatch action (in slices)
           dispatch({
@@ -173,8 +171,6 @@ const FormSignIn: FC<IFormSignIn> = () => {
             navigate("/user");
           }
         } else if (error && error.status === 400) {
-          // console.log("error && error.status === 400", error);
-          // console.log("error.data.message", error.data.message);
           let errorMessages = document.querySelector(".globalErrorMessage");
           if (errorMessages)
             errorMessages.textContent = "User or Password are invalid";

@@ -119,9 +119,6 @@ const UserPage: FC<IUserPage> = () => {
   useEffect(() => {
     async function fetchData() {
       const { data }: any = await getUserData({});
-      console.log("data", data);
-      console.log("TOKEN", data.body.token);
-
       try {
         if (data.body) {
           dispatch({
