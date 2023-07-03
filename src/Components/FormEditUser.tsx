@@ -120,6 +120,12 @@ const FormEditUser = (): JSX.Element => {
       }
     } catch (error) {
       console.log(`The error is: ${error}`);
+      dispatch({
+        type: "error/storeError",
+        payload: {
+          error: error,
+        },
+      });
     }
   }
   useEffect(() => {

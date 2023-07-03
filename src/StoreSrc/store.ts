@@ -7,6 +7,7 @@ import {
 import { authentication } from "./slices/authentication";
 import { editNameButton } from "./slices/editNameButton";
 import { user } from "./slices/user";
+import { error } from "./slices/error";
 
 import { useArgentBankAPI } from "./apiHooks/useArgentBankAPI";
 
@@ -32,6 +33,7 @@ const reducers = combineReducers({
   auth: authentication.reducer,
   editBtn: editNameButton.reducer,
   user: user.reducer,
+  error: error.reducer,
   [useArgentBankAPI.reducerPath]: useArgentBankAPI.reducer,
 });
 
@@ -41,7 +43,7 @@ export const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  blacklist: ['user']//n'ajoute pas les donnnées utilisateurs a localstorage - securité
+  blacklist: ['error']//n'ajoute pas ces states/données a localstorage
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

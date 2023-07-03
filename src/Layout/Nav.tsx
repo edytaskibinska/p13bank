@@ -81,8 +81,9 @@ const Nav: FC<INav> = ({ logoSrc, title }) => {
         isLog: false,
       },
     });
+    const storageItem = localStorage?.getItem("persist:root")
+    console.log("localStorage", storageItem)
     localStorage.removeItem('persist:root')
-    localStorage.clear(); 
   };
   return (
     <NavStyled className="main-nav">
