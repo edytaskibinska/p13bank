@@ -43,7 +43,7 @@ export const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  blacklist: ['error']//n'ajoute pas ces states/données a localstorage
+  blacklist: ["error"], //n'ajoute pas ces states/données a localstorage
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
@@ -61,7 +61,7 @@ export const store = configureStore({
   //If using Redux-Persist, you should specifically ignore all the action types it dispatches:
   middleware: getDefaultMiddleware({
     serializableCheck: {
-      ignoredActions: [REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }).concat(useArgentBankAPI.middleware),
 });
