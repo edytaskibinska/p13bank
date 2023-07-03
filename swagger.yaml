@@ -18,7 +18,7 @@ paths:
       tags:
         - Transactions Module
       summary: Transactions
-      description: API for monthly transactions
+      description: API for all transactions list
       parameters:
         - in: body
           name: body
@@ -44,7 +44,7 @@ paths:
       tags:
         - Transactions Module
       summary: Transaction
-      description: API for transaction
+      description: API for a single transaction and it's details
       parameters:
         - name: id
           in: path
@@ -178,15 +178,21 @@ definitions:
           id:
             type: number
             description: transaction id
-          title:
+          date:
             type: string
-            description: transaction title
+            description: transaction date
+          description:
+              type: string
+              description: transaction description
+          amount:
+            type: number
+            description: transaction amount
           balance:
             type: number
             description: transaction balance
-          balanceTypeDescription:
-            type: string
-            description: type of balance - current or avaliable
+          details:
+            type: object
+            description: transaction details
       transaction 2:
         type: object
         description: transaction list
@@ -194,15 +200,21 @@ definitions:
           id:
             type: number
             description: transaction id
-          title:
+          date:
             type: string
-            description: transaction title
+            description: transaction date
+          description:
+              type: string
+              description: transaction description
+          amount:
+            type: number
+            description: transaction amount
           balance:
             type: number
             description: transaction balance
-          balanceTypeDescription:
-            type: string
-            description: type of balance - current or avaliable
+          details:
+            type: object
+            description: transaction details
   Transaction:
     properties:
       id:

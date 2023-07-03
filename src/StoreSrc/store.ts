@@ -61,7 +61,7 @@ export const store = configureStore({
   //If using Redux-Persist, you should specifically ignore all the action types it dispatches:
   middleware: getDefaultMiddleware({
     serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      ignoredActions: [REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }).concat(useArgentBankAPI.middleware),
 });

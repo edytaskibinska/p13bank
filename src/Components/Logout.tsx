@@ -7,6 +7,7 @@ const Logout = (): null => {
   document.cookie = "isLog=; Max-Age=0";
   useEffect(() => {
     navigate("/sign-in");
+    localStorage.delete()
   }, [navigate]);
   return null;
 };
