@@ -43,8 +43,8 @@ paths:
         - Bearer: []
       tags:
         - Transactions Module
-      summary: Transaction detail
-      description: API for transaction detail
+      summary: Transaction
+      description: API for transaction
       parameters:
         - name: id
           in: path
@@ -57,14 +57,14 @@ paths:
           description: Transaction detail Payload
           required: true
           schema:
-            $ref: '#/definitions/TransactionDetail'
+            $ref: '#/definitions/Transaction'
       produces:
         - application/json
       responses:
         '200':
           description: Got operation Successfully
           schema:
-            $ref: '#/definitions/TransactionDetail'
+            $ref: '#/definitions/Transaction'
         '400':
           description: Cannot get operation
         '500':
@@ -88,14 +88,14 @@ paths:
           description: Transaction detail Payload
           required: true
           schema:
-            $ref: '#/definitions/TransactionDetail'
+            $ref: '#/definitions/Transaction'
       produces:
         - application/json
       responses:
         '200':
           description: User profile retrieved successully
           schema:
-            $ref: '#/definitions/TransactionDetail'
+            $ref: '#/definitions/Transaction'
         '400':
           description: Cannot get operation
         '500':
@@ -119,14 +119,14 @@ paths:
           description: Transaction detail Payload
           required: true
           schema:
-            $ref: '#/definitions/TransactionDetail'
+            $ref: '#/definitions/Transaction'
       produces:
         - application/json
       responses:
         '200':
           description: User profile retrieved successully
           schema:
-            $ref: '#/definitions/TransactionDetail'
+            $ref: '#/definitions/Transaction'
         '400':
           description: Cannot get operation
         '500':
@@ -150,14 +150,14 @@ paths:
           description: Transaction detail Payload
           required: true
           schema:
-            $ref: '#/definitions/TransactionDetail'
+            $ref: '#/definitions/Transaction'
       produces:
         - application/json
       responses:
         '200':
           description: User profile retrieved successully
           schema:
-            $ref: '#/definitions/TransactionDetail'
+            $ref: '#/definitions/Transaction'
         '400':
           description: Cannot get operation
         '500':
@@ -171,20 +171,81 @@ securityDefinitions:
 definitions:
   TransactionsList:
     properties: 
-      transaction1:
+      transaction 1:
         type: object
         description: transaction list
-      transaction2:
+        properties:
+          id:
+            type: number
+            description: transaction id
+          date:
+            type: string
+            description: transaction date
+          title:
+            type: string
+            description: transaction title
+          balance:
+            type: number
+            description: transaction balance
+          amount:
+            type: number
+            description: transaction amount
+          details:
+            type: object
+            description: transaction details
+      transaction 2:
         type: object
         description: transaction list
-  TransactionDetail:
+        properties:
+          id:
+            type: number
+            description: transaction id
+          date:
+            type: string
+            description: transaction date
+          title:
+            type: string
+            description: transaction title
+          balance:
+            type: number
+            description: transaction balance
+          amount:
+            type: number
+            description: transaction amount
+          details:
+            type: object
+            description: transaction details
+
+  Transaction:
     properties:
+      id:
+        type: number
+        description: transaction id
+      date:
+        type: string
+        description: transaction date
       title:
         type: string
         description: transaction title
+      balance:
+        type: number
+        description: transaction balance
       amount:
-        type: string
+        type: number
         description: transaction amount
-      description:
-        type: string
-        description: transaction description
+      details:
+        type: object
+        description: transaction details
+        properties:
+          description:
+            type: string
+            description: transaction description
+          type:
+            type: string
+            description: transaction type
+          category:
+            type: string
+            description: transaction category
+          note:
+            type: string
+            description: transaction note
