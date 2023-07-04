@@ -50,8 +50,6 @@ const persistedReducer = persistReducer(persistConfig, reducers);
 
 // Simplifying Store Setup with configureStore
 // configureStore helps with those issues by:
-// Having an options object with "named" parameters, which can be easier to read
-// Letting you provide arrays of middleware and enhancers you want to add to the store, and calling applyMiddleware and compose for you automatically
 // Enabling the Redux DevTools Extension automatically
 export const store = configureStore({
   // Importing or creating the root reducer function
