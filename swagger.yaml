@@ -30,11 +30,11 @@ paths:
         - application/json
       responses:
         '200':
-          description: Transactions shown with success
+          description: OK
           schema:
             $ref: '#/definitions/TransactionsList'
         '400':
-          description: Cannot get transactions
+          description: Bad Request
         '500':
           description: Internal Server Error
   /user/operation/{id}:
@@ -62,11 +62,11 @@ paths:
         - application/json
       responses:
         '200':
-          description: Got operation Successfully
+          description: OK
           schema:
             $ref: '#/definitions/Transaction'
         '400':
-          description: Cannot get operation
+          description: Bad Request
         '500':
           description: Internal Server Error
     post:
@@ -93,11 +93,11 @@ paths:
         - application/json
       responses:
         '200':
-          description: User profile retrieved successully
+          description: OK
           schema:
             $ref: '#/definitions/Transaction'
         '400':
-          description: Cannot get operation
+          description: Bad Request
         '500':
           description: Internal Server Error
     put:
@@ -124,11 +124,11 @@ paths:
         - application/json
       responses:
         '200':
-          description: User profile retrieved successully
+          description: OK
           schema:
             $ref: '#/definitions/Transaction'
         '400':
-          description: Cannot get operation
+          description: Bad Request
         '500':
           description: Internal Server Error
     delete:
@@ -155,11 +155,11 @@ paths:
         - application/json
       responses:
         '200':
-          description: User profile retrieved successully
+          description: OK
           schema:
             $ref: '#/definitions/Transaction'
         '400':
-          description: Cannot get operation
+          description: Bad Request
         '500':
           description: Internal Server Error
 
