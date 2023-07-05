@@ -12,6 +12,7 @@ const initialState: AuthType = {
 };
 //STATE SLICES
 //slice for user authentication
+//reducer par cas d'usage
 export const authentication = createSlice({
   name: "authentication",
   initialState,

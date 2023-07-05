@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 
 //SRC
+// redux query
 //https://redux-toolkit.js.org/rtk-query/usage-with-typescript#createapi
 export const useArgentBankAPI = createApi({
   reducerPath: "bankApiReducer",
@@ -18,7 +19,7 @@ export const useArgentBankAPI = createApi({
     },
   }),
   endpoints: (builder) => ({
-    //Mutation endpoints are defined by returning an object inside the endpoints section of createApi, 
+    //Mutation endpoints are defined by returning an object inside the endpoints section of createApi,
     //and defining the fields using the build.mutation() method.
     //https://redux.js.org/tutorials/essentials/part-8-rtk-query-advanced
     loginUser: builder.mutation({
