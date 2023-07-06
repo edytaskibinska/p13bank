@@ -34,7 +34,7 @@ paths:
           schema:
             $ref: '#/definitions/TransactionsList'
         '400':
-          description: Bad Request
+          description: Unauthorized (on a besoin de token)
         '500':
           description: Internal Server Error
   /user/operation/{id}:
@@ -65,8 +65,10 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Transaction'
-        '400':
-          description: Bad Request
+        '401':
+          description: Unauthorized (on a besoin de token)
+        '404':
+          description: Not found
         '500':
           description: Internal Server Error
     post:
@@ -96,8 +98,6 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Transaction'
-        '400':
-          description: Bad Request
         '500':
           description: Internal Server Error
     put:
@@ -127,8 +127,10 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Transaction'
-        '400':
-          description: Bad Request
+        '401':
+          description: Unauthorized (on a besoin de token)
+        '403':
+          description: Forbidden
         '500':
           description: Internal Server Error
     delete:
@@ -158,8 +160,10 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Transaction'
-        '400':
-          description: Bad Request
+        '401':
+          description: Unauthorized (on a besoin de token)
+        '403':
+          description: Forbidden
         '500':
           description: Internal Server Error
 
