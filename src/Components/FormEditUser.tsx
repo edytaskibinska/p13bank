@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 import { RootState } from "../StoreSrc/store";
-import { useSetProfileMutation } from "../StoreSrc/apiHooks/useArgentBankAPI";
+import { useSetProfileMutation , SignUpUserArgs} from "../StoreSrc/apiHooks/useArgentBankAPI";
 import { FormInputComponent } from ".";
 import { changeValidHandler } from "../Helpers/inputValidator";
 
@@ -95,10 +95,14 @@ const FormEditUser = (): JSX.Element => {
     try {
       if (validFirstName && validLastName) {
         setShowError(false);
-        const { data }: any = await editUser({
+
+        const profileData: SignUpUserArgs = {
           firstName: firstNameInp,
           lastName: lastNameInp,
-        });
+        };
+
+        const { data }: any = await editUser(profileData);
+
         if (data && data.status === 200) {
           dispatch({
             type: "user/storeUser",
