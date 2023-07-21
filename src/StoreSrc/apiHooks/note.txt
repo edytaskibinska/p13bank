@@ -24,3 +24,48 @@ gérer les réponses du serveur.
 
 En résumé, dans le contexte de Redux Toolkit Query, une mutation est une opération qui effectue une requête HTTP pour créer ou mettre à 
 jour des données sur le serveur, et elle est gérée par la bibliothèque pour maintenir un état cohérent de la demande et de la réponse.
+
+////////////////////////////
+
+La syntaxe `<SignUpUserResult, SignUpUserArgs>` dans l'exemple `setProfile: builder.mutation<SignUpUserResult, SignUpUserArgs>` 
+est une utilisation des génériques en TypeScript.
+
+Les génériques sont un mécanisme de TypeScript qui permet de créer des composants réutilisables et flexibles 
+en spécifiant des types de données de manière dynamique. Ils permettent de paramétrer le type des arguments ou des résultats d'une fonction, 
+d'une classe ou, dans ce cas, d'une méthode de la bibliothèque Redux Toolkit Query.
+
+Dans le contexte de Redux Toolkit Query, les génériques sont utilisés pour spécifier les types de données attendus pour une requête ou une mutation particulière. 
+Dans l'exemple que vous avez donné :
+
+```typescript
+setProfile: builder.mutation<SignUpUserResult, SignUpUserArgs>
+```
+
+- `SignUpUserResult` est le type de données attendu pour le résultat (la réponse) de la mutation `setProfile`. C'est l'interface qui définit 
+la structure des données renvoyées par la mutation.
+- `SignUpUserArgs` est le type de données attendu pour les arguments (les données à envoyer au serveur) 
+de la mutation `setProfile`. C'est l'interface qui définit la structure des données que vous devez fournir à 
+la mutation pour qu'elle puisse fonctionner correctement.
+
+En utilisant les génériques, Redux Toolkit Query peut effectuer une vérification de type statique plus solide et fournir des 
+informations de type précises à l'éditeur, ce qui facilite le développement et réduit les erreurs liées aux types.
+
+En résumé, la syntaxe `<SignUpUserResult, SignUpUserArgs>` dans `builder.mutation` permet de spécifier les types attendus pour les résultats et les arguments de la 
+mutation `setProfile`, garantissant ainsi que les données envoyées et reçues sont bien typées et cohérentes.
+
+
+///
+
+En général, dans le contexte de Redux Toolkit Query, on specifie le type de résultat en premier, 
+suivi du type des arguments pour les mutations utilisant la syntaxe des génériques.
+
+La syntaxe générique est définie par les chevrons `<...>`. Dans `builder.mutation<SignUpUserResult, SignUpUserArgs>`, `SignUpUserResult` est 
+le type du résultat (la réponse) de la mutation, et `SignUpUserArgs` est le type des arguments (les données envoyées au serveur) de la mutation.
+
+Cette convention est courante dans Redux Toolkit Query, mais elle peut varier en fonction des bibliothèques ou des situations spécifiques où les génériques sont utilisés.
+ Dans d'autres contextes, on peut rencontrer différentes conventions pour l'ordre des génériques, mais l'approche la plus courante est d'abord de spécifier 
+ le type de résultat, suivi du type des arguments.
+
+Il est également important de noter que l'utilisation de génériques n'est pas limitée aux mutations dans Redux Toolkit Query. 
+On peut egalement les rencontrer dans d'autres parties du code TypeScript, telles que les fonctions génériques, 
+les classes génériques, etc. Les génériques offrent une grande flexibilité pour créer des composants réutilisables et génériques en termes de types de données.
